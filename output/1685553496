@@ -1,0 +1,351 @@
+interface: eth0 (172.24.0.0/255.255.0.0)
+filter: ( port 1247 ) and ((ip || ip6) || (vlan && (ip || ip6)))
+####
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #4
+....
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #6
+<MsgHeader_PI>
+<type>RODS_CONNECT</type>
+<msgLen>338</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #8
+<StartupPack_PI>
+<irodsProt>0</irodsProt>
+<reconnFlag>0</reconnFlag>
+<connectCnt>0</connectCnt>
+<proxyUser>rods</proxyUser>
+<proxyRcatZone>tempZone</proxyRcatZone>
+<clientUser>rods</clientUser>
+<clientRcatZone>tempZone</clientRcatZone>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<option>ils</option>
+</StartupPack_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #10
+....
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #12
+<MsgHeader_PI>
+<type>RODS_VERSION</type>
+<msgLen>183</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #14
+<Version_PI>
+<status>0</status>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<reconnPort>0</reconnPort>
+<reconnAddr></reconnAddr>
+<cookie>400</cookie>
+</Version_PI>
+
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #16
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #17
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>703</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #19
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #20
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>64</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #21
+cb7aeafce7001eb2502b81f22a57cc6e83365487e5ce82d74a36246f27a3984e
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #23
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #24
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>30</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>704</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #25
+O...H..a....F.Vnrods#tempZone.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #27
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #28
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #30
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #31
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>98</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>633</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #32
+/tempZone/home/rods.................................%@#ANULLSTR$%.....%@#ANULLSTR$%.%@#ANULLSTR$%.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #34
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #35
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>75</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>2</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #36
+................10011..rods.tempZone.01685553123.01685553125.%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #38
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #39
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>78</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>702</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #40
+....................zone.tempZone.....................= '/tempZone/home/rods'.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #42
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #43
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>1103</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #44
+.......................2.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #46
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #47
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>193</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>722</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #48
+ShowCollAcls./tempZone/home/rods.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.%@#ANULLSTR$%.....................zone.tempZone.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #50
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #51
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>1088</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #52
+.......................2rods........2tempZone........2own........2rodsadmin.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #54
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #55
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>100</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>702</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #56
+....................%@#ANULLSTR$%.%@#ANULLSTR$%.........................= 'rods'.= '/tempZone/home'.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #58
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #59
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>1116</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>-808000</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #60
+........................%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #62
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #63
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>98</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>633</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #64
+/tempZone/home/rods.................................%@#ANULLSTR$%.....%@#ANULLSTR$%.%@#ANULLSTR$%.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #66
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #67
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>75</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>2</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #68
+................10011..rods.tempZone.01685553123.01685553125.%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #70
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #71
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>141</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>702</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #72
+............... ....%@#ANULLSTR$%.%@#ANULLSTR$%..................................................................... = '/tempZone/home/rods'.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #74
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #75
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>1116</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>-808000</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #76
+........................%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #78
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #79
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>149</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>702</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #80
+....................%@#ANULLSTR$%.%@#ANULLSTR$%.........................................................................<>'/'.='/tempZone/home/rods'.
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #82
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #83
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>1116</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>-808000</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49188 [AP] #84
+........................%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.........%@#ANULLSTR$%.
+##
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #86
+....
+#
+T 172.24.0.3:49188 -> 172.24.0.2:1247 [AP] #87
+<MsgHeader_PI>
+<type>RODS_DISCONNECT</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+####exit
+91 received, 60 matched

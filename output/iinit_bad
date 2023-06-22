@@ -1,0 +1,264 @@
+interface: eth0 (172.24.0.0/255.255.0.0)
+filter: ( port 1247 ) and ((ip || ip6) || (vlan && (ip || ip6)))
+####
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #4
+....
+##
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #6
+<MsgHeader_PI>
+<type>RODS_CONNECT</type>
+<msgLen>340</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #8
+<StartupPack_PI>
+<irodsProt>1</irodsProt>
+<reconnFlag>0</reconnFlag>
+<connectCnt>0</connectCnt>
+<proxyUser>rods</proxyUser>
+<proxyRcatZone>tempZone</proxyRcatZone>
+<clientUser>rods</clientUser>
+<clientRcatZone>tempZone</clientRcatZone>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<option>iinit</option>
+</StartupPack_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #10
+....
+##
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #12
+<MsgHeader_PI>
+<type>RODS_VERSION</type>
+<msgLen>183</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #14
+<Version_PI>
+<status>0</status>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<reconnPort>0</reconnPort>
+<reconnAddr></reconnAddr>
+<cookie>400</cookie>
+</Version_PI>
+
+##
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #16
+....
+#
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #17
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>703</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #19
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #20
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>153</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #22
+<authRequestOut_PI>
+<challenge>NTE1MDVjODJlZTJiMjQzOTEyYTlmNjdlNDBlYWIwMmVhMTdiMDUwNGUzNjNiYWQxYTJiNDkzZmU2MmIxY2RmMQ==</challenge>
+</authRequestOut_PI>
+
+#
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #23
+....
+#
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #24
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>124</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>704</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #25
+<authResponseInp_PI>
+<response>X+Zyeu56yq7ze+NBpIyn6g==</response>
+<username>rods#tempZone</username>
+</authResponseInp_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #27
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:55030 [AP] #28
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>-826000</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #30
+....
+#
+T 172.24.0.3:55030 -> 172.24.0.2:1247 [AP] #31
+<MsgHeader_PI>
+<type>RODS_DISCONNECT</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+########
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #39
+....
+##
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #41
+<MsgHeader_PI>
+<type>RODS_CONNECT</type>
+<msgLen>340</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #43
+<StartupPack_PI>
+<irodsProt>1</irodsProt>
+<reconnFlag>0</reconnFlag>
+<connectCnt>0</connectCnt>
+<proxyUser>rods</proxyUser>
+<proxyRcatZone>bempZone</proxyRcatZone>
+<clientUser>rods</clientUser>
+<clientRcatZone>bempZone</clientRcatZone>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<option>iinit</option>
+</StartupPack_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #45
+....
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #47
+<MsgHeader_PI>
+<type>RODS_VERSION</type>
+<msgLen>183</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #49
+<Version_PI>
+<status>0</status>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<reconnPort>0</reconnPort>
+<reconnAddr></reconnAddr>
+<cookie>400</cookie>
+</Version_PI>
+
+##
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #51
+....
+#
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #52
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>703</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #54
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #55
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>153</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #56
+<authRequestOut_PI>
+<challenge>ZDRiMDllZWJlNTlhYzJhZWE5MTk1ODY1YzkxMDg4M2QwNWUxYzQ0ZGNiNGYzODQyYmQ4NDNmNzRjOTlmZjQ2Mg==</challenge>
+</authRequestOut_PI>
+
+##
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #58
+....
+#
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #59
+<MsgHeader_PI>
+<type>RODS_API_REQ</type>
+<msgLen>124</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>704</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #60
+<authResponseInp_PI>
+<response>8HrxEaYW3mFYtKXjHKD2Yw==</response>
+<username>rods#bempZone</username>
+</authResponseInp_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #62
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:49374 [AP] #63
+<MsgHeader_PI>
+<type>RODS_API_REPLY</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>-827000</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #65
+....
+#
+T 172.24.0.3:49374 -> 172.24.0.2:1247 [AP] #66
+<MsgHeader_PI>
+<type>RODS_DISCONNECT</type>
+<msgLen>0</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+####exit
+70 received, 36 matched

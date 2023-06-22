@@ -1,0 +1,103 @@
+interface: eth0 (172.24.0.0/255.255.0.0)
+filter: ( port 1247 ) and ((ip || ip6) || (vlan && (ip || ip6)))
+####
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #4
+....
+##
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #6
+<MsgHeader_PI>
+<type>RODS_CONNECT</type>
+<msgLen>364</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #8
+<StartupPack_PI>
+<irodsProt>0</irodsProt>
+<reconnFlag>0</reconnFlag>
+<connectCnt>0</connectCnt>
+<proxyUser>rods</proxyUser>
+<proxyRcatZone>tempZone</proxyRcatZone>
+<clientUser>rods</clientUser>
+<clientRcatZone>tempZone</clientRcatZone>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<option>ilsrequest_server_negotiation</option>
+</StartupPack_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:59844 [AP] #10
+....
+##
+T 172.24.0.2:1247 -> 172.24.0.3:59844 [AP] #12
+<MsgHeader_PI>
+<type>RODS_CS_NEG_T</type>
+<msgLen>78</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:59844 [AP] #14
+<CS_NEG_PI>
+<status>1</status>
+<result>CS_NEG_DONT_CARE</result>
+</CS_NEG_PI>
+
+##
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #16
+....
+#
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #17
+<MsgHeader_PI>
+<type>RODS_CS_NEG_T</type>
+<msgLen>141</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+#
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #18
+<CS_NEG_PI>
+<status>1</status>
+<result>cs_neg_sid_kw=f919840ac119b2ffeb091ef10455ce92;cs_neg_result_kw=CS_NEG_USE_SSL;</result>
+</CS_NEG_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:59844 [AP] #20
+....
+#
+T 172.24.0.2:1247 -> 172.24.0.3:59844 [AP] #21
+<MsgHeader_PI>
+<type>RODS_VERSION</type>
+<msgLen>183</msgLen>
+<errorLen>0</errorLen>
+<bsLen>0</bsLen>
+<intInfo>0</intInfo>
+</MsgHeader_PI>
+
+##
+T 172.24.0.2:1247 -> 172.24.0.3:59844 [AP] #23
+<Version_PI>
+<status>0</status>
+<relVersion>rods4.2.11</relVersion>
+<apiVersion>d</apiVersion>
+<reconnPort>0</reconnPort>
+<reconnAddr></reconnAddr>
+<cookie>400</cookie>
+</Version_PI>
+
+#
+T 172.24.0.3:59844 -> 172.24.0.2:1247 [AP] #24
+...........2.:...._...[r.!a".P\.FW......^.E....0.,.(.$...
+.....k.j.9.8.......2...*.&.......=.5.../.+.'.#.........g.@.3.2.....E.D...1.-.).%.......<./...A...........................
+.....K.........irods-catalog-provider.........
+.............................
+.#..... ............................................................................................................................................................................................................................................................
+#exit
+25 received, 13 matched
