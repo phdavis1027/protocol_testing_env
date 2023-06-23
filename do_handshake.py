@@ -1,4 +1,5 @@
 import socket 
+import struct
 import base64
 import json
 import hashlib
@@ -7,6 +8,7 @@ import xml.etree.ElementTree as ET
 
 HOST = "ubuntu-2004-postgres-1012_irods-catalog-provider_1"
 PORT = 1247
+MAX_PASSWORD_LENGTH = 50
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
@@ -103,14 +105,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     reply_body = ET.fromstring(reply_body)
     buf = reply_body.find("buf").text
     buf = base64.b64decode(buf).decode("utf-8")
-    print("BUF")
-    print(buf)
     buf = json.loads(buf[:-1]) ## There's a weird null(?) byte at the end
 
     ## Guessing this behavior based on PRC
     m = hashlib.md5()
-    m.update(buf['request_result'].encode("utf-8"))
-    m.update("rods".encode("utf-8"))
+    m.update(buf["request_result"].encode("utf-8"))
+    pw = struct.pack("%ds" % MAX_PASSWORD_LENGTH, "rods".encode("utf-8").strip())
+    m.update(pw)
     digest = m.digest()
     buf["digest"] = base64.b64encode(digest).decode("utf-8")
     ## The context has moved on to the next stage in the handshake
@@ -120,8 +121,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     msg = f""" 
     <BinBytesBuf_PI>
-        <buflen>{len(buf)}</buflen>
         <buf>{buf.decode('utf-8')}</buf>
+        <buflen>{len(buf)}</buflen>
     </BinBytesBuf_PI>
     """.replace(" ", "").replace("\n", "").encode("utf-8") 
     print(msg)
@@ -144,4 +145,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     reply_header = s.recv(reply_len).decode('utf-8')
     print("HEADER")
     print(reply_header)
-    reply_header = ET.fromstring(reply_header)
