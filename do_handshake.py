@@ -4,6 +4,7 @@ import base64
 import json
 import hashlib
 import pdb
+import time
 import xml.etree.ElementTree as ET
 
 HOST = "ubuntu-2004-postgres-1012_irods-catalog-provider_1"
@@ -42,18 +43,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     """.replace(' ', '').replace('\n', '').encode("utf-8")
 
     # First part of an iRODS message is always 4 bytes indicating how large the header is 
-    s.send(len(header).to_bytes(4, byteorder='big'))
+    s.sendall(len(header).to_bytes(4, byteorder='big'))
     # Then send the header
-    s.send(header)
+    s.sendall(header)
     # Finally message
-    s.send(msg)
+    s.sendall(msg)
     # If we had an error stack or a raw byte stream, we'd send them here
     # Notice that both errorLen and bsLen in the header are set to 0, so we don't do that
 
     ## Now we just do the reverse
     reply_len = int.from_bytes(s.recv(4), byteorder='big')
     reply_header = s.recv(reply_len).decode('utf-8')
-    print(reply_header)
     reply_header = ET.fromstring(reply_header)
 
     ## In some newer versions of the auth framework, 
@@ -61,7 +61,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # Tip of main wraps it in a base64-encoded bytes buf, which means this message still 
     # complies with the "official" iRODS protocol
     reply_body = s.recv(int(reply_header.find('msgLen').text)).decode("utf-8")
-    print(reply_body)
 
     auth_ctx = {"a_ttl":"0",
                 "force_password_prompt":"true",
@@ -89,14 +88,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     </MsgHeader_PI>
     """.replace(' ', '').replace('\n', '').encode("utf-8")
 
-    s.send(len(header).to_bytes(4, byteorder='big'))
-    s.send(header)
-    s.send(msg)
+    s.sendall(len(header).to_bytes(4, byteorder='big'))
+    s.sendall(header)
+    s.sendall(msg)
 
     reply_len = int.from_bytes(s.recv(4), byteorder='big')
     reply_header = s.recv(reply_len).decode('utf-8')
-    print("HEADER")
-    print(reply_header)
     reply_header = ET.fromstring(reply_header)
 
     reply_body = s.recv(
@@ -110,6 +107,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     ## Guessing this behavior based on PRC
     m = hashlib.md5()
     m.update(buf["request_result"].encode("utf-8"))
+    ## You must pad bc the server has fixed length arrays
     pw = struct.pack("%ds" % MAX_PASSWORD_LENGTH, "rods".encode("utf-8").strip())
     m.update(pw)
     digest = m.digest()
@@ -121,11 +119,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     msg = f""" 
     <BinBytesBuf_PI>
-        <buf>{buf.decode('utf-8')}</buf>
         <buflen>{len(buf)}</buflen>
+        <buf>{buf.decode('utf-8')}</buf>
     </BinBytesBuf_PI>
     """.replace(" ", "").replace("\n", "").encode("utf-8") 
-    print(msg)
 
     header = f""" 
     <MsgHeader_PI>
@@ -137,11 +134,80 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     </MsgHeader_PI>
     """.replace(' ', '').replace('\n', '').encode("utf-8")
 
-    s.send(len(header).to_bytes(4, byteorder='big'))
-    s.send(header)
-    s.send(msg)
+    s.sendall(len(header).to_bytes(4, byteorder='big'))
+    s.sendall(header)
+    s.sendall(msg)
 
+    ## The fact that the server responds with a bytesbuf 
+    ## instead of error code -816000 means that it was happy with us 
     reply_len = int.from_bytes(s.recv(4), byteorder='big')
     reply_header = s.recv(reply_len).decode('utf-8')
-    print("HEADER")
+    print("REPLY_HEADER")
+    print("---")
     print(reply_header)
+    print("---")
+    reply_header = ET.fromstring(reply_header)
+    reply_body = s.recv(int(reply_header.find("msgLen").text))
+    print("REPLY_BODY")
+    print("---")
+    print(reply_body)
+    print("---")
+    ## A real `ils` would stat the collection first to make sure it's actually there,
+    ## but we know it's there because we're smart, so we're gonna skip that.
+
+    msg = f"""
+    <GenQueryInp_PI>
+        <maxRows>256</maxRows>
+        <continueInx>0</continueInx>
+        <partialStartIndex>-1</partialStartIndex>
+        <options>0</options>
+        <KeyValPair_PI>
+            <ssLen>1</ssLen>
+            <keyWord>zone</keyWord>
+            <svalue>tempZone</svalue>
+        </KeyValPair_PI>
+        <InxIvalPair_PI>
+            <iiLen>1</iiLen>
+            <inx>506</inx>
+            <ivalue>1</ivalue>
+        </InxIvalPair_PI>
+        <InxValPair_PI>
+            <isLen>1</isLen>
+            <inx>501</inx>
+            <svalue>= &apos;/tempZone/home/rods&apos;</svalue>
+        </InxValPair_PI>
+    </GenQueryInp_PI>
+    """.replace(' ', '').replace('\n', '').encode("utf-8")
+
+
+    header = f""" 
+    <MsgHeader_PI>
+            <type>RODS_API_REQ</type>
+            <msgLen>{len(msg)}</msgLen>
+            <errorLen>0</errorLen>
+            <bsLen>0</bsLen>
+            <intInfo>702</intInfo>
+    </MsgHeader_PI>
+    """.replace(' ', '').replace('\n', '').encode("utf-8")
+
+    s.sendall(len(header).to_bytes(4, byteorder='big'))
+    s.sendall(header)
+    s.sendall(msg)
+
+    reply_len = int.from_bytes(s.recv(4), byteorder="big")
+    reply_header = s.recv(reply_len).decode('utf-8')
+    print("REPLY_HEADER")
+    print("---")
+    print(reply_header)
+    print("---")
+    reply_header = ET.fromstring(reply_header)
+
+    reply_body = s.recv(
+                int(reply_header.find('msgLen').text)
+            ).decode("utf-8")
+    print("REPLY_BODY")
+    print("---")
+    print(reply_body)
+    print("---")
+    reply_body = ET.fromstring(reply_body)
+

@@ -15,11 +15,9 @@
         let data = JSON.parse(_data.replaceAll("&#34;", "\""))
 
         let graph = Viva.Graph.graph();
-	let container = document.body;
 
 
         constructGraph(data, graph);        
-	// generateDOMLabels(graph)
 
 
         var layout = Viva.Graph.Layout.forceDirected(graph, {
@@ -88,6 +86,7 @@
           })
 
           renderer.run();
+	  generateDOMLabels(graph)
 
           // Final bit: most likely graph will take more space than available
           // screen. Let's zoom out to fit it into the view:
