@@ -8,3 +8,8 @@ that handle high concurrency.
 some other specs that reading specs was going to be a lot less useful than just writing one,
 but this is a really lucid and elegantly written document that I think I can actually
 learn a lot from.
+
+- See startup_pack.go:34-35 in the go-irodsclient for some useful code w/r/t xplaining what the 
+option field does.
+
+- Figure out and write down what byte-order all the integers used in the iRODS protocol are assumed to be in 
