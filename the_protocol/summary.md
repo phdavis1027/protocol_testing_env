@@ -130,3 +130,40 @@ this information:
 |InxIvalPair_PI     |Integer |Integer   |
 |InxValPair_PI      |Integer |String    |
 |KeyValPair_PI      |String  |String    |
+
+Many packing instructions define a field of type `KeyValPair_PI` called `condInput` that holds parameters that are useful across
+many kinds of operations. Below is an example of a `condInput`, which illustrates the use of `KeyValPair_PI` as a hash map. For a full
+listing of the key values used by iRODS version 4.3.0, see the file `rodsKeyWdDef.h` in the main iRODS repository.
+
+```xml
+<KeyValPair_PI>
+    <ssLen>3</ssLen>
+    <keyWord>forceFlag</keyWord>
+    <keyWord>regChksum</keyWord>
+    <keyWord>destRescName</keyWord>
+    <svalue></svalue>
+    <svalue></svalue>
+    <svalue>demoResc</svalue>
+</KeyValPair_PI>
+```
+
+This `KeyValPair_PI` models the following Python dictionary:
+
+```python
+{
+    'forceFlag':'',
+    'regChkSum':'',
+    'destRescName':'demoResc'
+}
+```
+
+Additionally, this `KeyValPair_PI` was produced by running the iCommand 
+```
+icp -f -k -R demoResc src dst
+```
+See documentation for the iRODS 4.3.0 iCommands to get the usage of this iCommand.
+
+`<ssLen>3</ssLen>` indicates that there are 3 keys in this hash map. The three `<keyWord>` tags act as a keyword array, and the 
+three `<svalue>` tags act as a value array. To find the value corresponding to the keyword "destRescName," first find the index
+of "destRescName" in the keyword array. Its value will be located at that same index in the value array. Here, both "regChksum" 
+and "forceFlag" have empty values because they are binary flags. They must still have a corresponding entry in the value array.
