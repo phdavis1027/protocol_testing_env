@@ -1,0 +1,10 @@
+- The Postgres protocol spec makes a note that a new server process is started for each client.
+Since iRODS does the same, it might make sense to note this somewhere. It's definitely
+not needed to fully describe the iRODS protocol, but might help strengthen the reader's
+*mental model*/put iRODS in context with other well-known data management systems
+that handle high concurrency.
+
+- I just started reading the Postgres spec. I had recently decided based on experience with 
+some other specs that reading specs was going to be a lot less useful than just writing one,
+but this is a really lucid and elegantly written document that I think I can actually
+learn a lot from.
