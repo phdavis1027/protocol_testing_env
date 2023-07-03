@@ -1,0 +1,9 @@
+type,description
+char,8-bit unsigned intger.
+bin,8-bit binary data. In XML protocol items of type `bin` MUST be base64-encoded.
+str,A null-terminated string of valid UTF-8 chars.
+piStr,Syntactically the same as `str` but value must be a valid iRODS protocol type. 
+int,32-bit integer or floating point value.
+double,64-bit integer or floating point value.
+struct,A nested packing instruction. 
+?,Signals a dependent type. Following string must correspond to the name of a `piStr` in the same packing instruction.

@@ -28,7 +28,7 @@ flow through which the protocol messages will move during authentication is dete
 
 ## 4. Encoding Schemes
 
-The basic entities in the iRODS protocol are called packing instruction. A packing instruction is a single message that must be processed
+IRODS protocol messages are made up of entities called packing instructions. A packing instruction is a single message that must be processed
 by either client or server. Packing instructions can be nested inside of other packing instructions,
 requiring recursive serialization and deserialization. To each packing instruction corresponds an in-memory C struct. There are
 two encoding schemes for packing instructions. The first works by removing padding from the byte-level representation of the corresponding C struct 
@@ -119,7 +119,32 @@ arbitrary bytes and is mainly used for data transfer. Most messages have no byte
 
 ## 6. Primitive Types
 
-## 7. The Generic/Associate Array Types
+[ Note for future generations: here I wasted 30 minutes trying to think about a succint way to come up with a skimmable BNF grammar for 
+packing instructions. This may still turn out to be useful, but it will require more mental effort to understand than is called for in a 
+throwaway explanation and so shoul be put somewhere else ]
+
+[ Another note for future generations: It would probably make more sense to hoist this section and the one following it to the top 
+so the ad-hoc descriptions used in the handshake description aren't necessary and can be replaced with solid examples that will be 
+understandable to the reader. ]
+
+Packing instructions are structured collections of primitives and other packing instructions. The following table summarizes the primitive
+types available in the iRODS protocol: 
+
+| type   | description                                                                                                          |
+|--------|----------------------------------------------------------------------------------------------------------------------|
+| char   | 8-bit unsigned integer.                                                                                              |
+| bin    | 8-bit binary data. In XML protocol items of type `bin` MUST be base64-encoded.                                       |
+| str    | A null-terminated string of valid UTF-8 chars.                                                                       |
+| piStr  | Syntactically the same as `str` but value must be a valid iRODS protocol type.                                       |
+| int    | 32-bit integer or floating point value.                                                                              |
+| double | 64-bit integer or floating point value.                                                                              |
+| struct | A nested packing instruction.                                                                                        |
+| ?      | Signals a dependent type. Following string must correspond to the name of a `piStr` in the same packing instruction. |
+
+Note that the iRODS protocol does not distinguish between integers and floating point numbers. The types `char`, `bin`, `int`, and `double` 
+signal only the byte-length of the data they refer to. It is up to the consuming API to interpret those bytes appropriately. 
+
+## 7. The Hash Map Types
 
 The iRODS protocol features a family of packing instructions which implement random access by key values, like `HashMap<K,V>`
 types in Java or dictionaries in Python. These types differ in the types assigned to their keys and values. The following table summarizes
