@@ -1,4 +1,6 @@
-## 1. Goals of this Document
+## 1. Goals of this Document 
+^^^^^^^
+||||||| This section is a direct ripoff of the [AMQP spec's](https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf) identically-titled section.
 
 This document defines the protocol used by clients and servers running iRODS, which is open-source data management software. 
 This protocol is application-specific and tightly coupled with the APIs provided by particular clients/servers.
