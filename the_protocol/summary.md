@@ -119,9 +119,9 @@ arbitrary bytes and is mainly used for data transfer. Most messages have no byte
 
 ## 6. Primitive Types
 
-[ Note for future generations: here I wasted 30 minutes trying to think about a succint way to come up with a skimmable BNF grammar for 
+[ Note for future generations: here I wasted 30 minutes trying to think about a succinct way to come up with a skimmable BNF grammar for 
 packing instructions. This may still turn out to be useful, but it will require more mental effort to understand than is called for in a 
-throwaway explanation and so shoul be put somewhere else ]
+throwaway explanation and so should be put somewhere else if it makes the cut. ]
 
 [ Another note for future generations: It would probably make more sense to hoist this section and the one following it to the top 
 so the ad-hoc descriptions used in the handshake description aren't necessary and can be replaced with solid examples that will be 
@@ -135,7 +135,7 @@ types available in the iRODS protocol:
 | char   | 8-bit unsigned integer.                                                                                              |
 | bin    | 8-bit binary data. In XML protocol items of type `bin` MUST be base64-encoded.                                       |
 | str    | A null-terminated string of valid UTF-8 chars.                                                                       |
-| piStr  | Syntactically the same as `str` but value must be a valid iRODS protocol type.                                       |
+| piStr  | Syntactically the same as `str` but value must be the name of a valid iRODS protocol type.                           |
 | int    | 32-bit integer or floating point value.                                                                              |
 | double | 64-bit integer or floating point value.                                                                              |
 | struct | A nested packing instruction.                                                                                        |
