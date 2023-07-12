@@ -1,0 +1,5 @@
+// iRODS Protocol Control Flow
+digraph "irods-prot-control-flow" {
+	Handshake -> Authentication
+	Authentication -> "API Request-Response Loop"
+}

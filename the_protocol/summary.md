@@ -22,7 +22,7 @@ iRODS zone topologies are often complex. However, as far as the iRODS protocol i
 entities: the client and the server. Connections are initiated by the client. The transport layer protocol underlying an iRODS protocol
 workflow can either be plain TCP [ TODO: How to describe this in more technical terms? ] or TLS. After the 
 initial request for connection, the client and server will decide whether a negotiation is required to decide the transport layer protocol.
-If it is, they will undergo that negotiation, and if it isn't they will default to TCP. If a negotiation is required, client and server
+If it is, they will undergo that negotiation, and if it isn't, they will default to TCP. If a negotiation is required, client and server
 inform each other of their POLICY regarding the choice between TCP and TLS. If client and server have incompatible policies (e.g., client 
 requires TCP and server requires TLS), the negotiation will fail; otherwise, once the negotiation has completed, the client will send a
 request to authenticate as a user in a zone known by [ TODO: Known by? ] the server. This request is an API_REQ (see: ). The specific control
