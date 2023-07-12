@@ -23,4 +23,52 @@ achieved using a handful of basic patterns.
 ## 3. The iRODS Protocol
 
 Nodes in an iRODS zone communicate using a message-oriented, wire-level protocol. Before describing the capabilities of this protocol,
-we will describe the 
+we will describe the structure of iRODS protocol messages. 
+
+
+### a. Primitive Types 
+
+The most basic elements in the iRODS protocol are primitive types. The following table describes all primitive types.
+
+| Type   | Description                                                                                                                          |
+|--------|--------------------------------------------------------------------------------------------------------------------------------------|
+| char   | 8-bit unsigned integer.                                                                                                              |
+| bin    | 8-bit binary data. In XML protocol items of type `bin` MUST be base64-encoded.                                                       |
+| str    | A null-terminated string of valid UTF-8 chars.                                                                                       |
+| piStr  | Syntactically the same as `str` but value must be the name of a valid iRODS protocol type.                                           |
+| int    | 32-bit integer or floating point value.                                                                                              |
+| double | 64-bit integer or floating point value.                                                                                              |
+| struct | A nested packing instruction (see Section b).                                                                                        |
+| ?      | Signals a dependent type. Following string must correspond to the name of a `piStr` in the same packing instruction (see Section b). |
+
+
+### b. Packing Instructions
+
+IRODS protocol messages cannot be composed solely of primitive types. Rather, instances of primitive types must be transmitted
+in structured formats called packing instructions. Packing instructions are described using a special syntax described in section (???). 
+Each packing instruction maps in a one-to-one fashion to a C struct in the source code of the iRODS server. For example, the following
+packing instruction string
+
+```
+"KeyValPair_PI kvp; str s; int i;"
+```
+
+corresponds to the struct 
+
+```
+struct S
+{
+    keyValPair_t kvp;
+    char* s;
+    int i;
+};
+```
+ 
+### c. Native vs. XML encoding
+
+Any packing instruction can be represented in either of two encodings: native and XML. The environment variable `irodsProt` is used by 
+iCommands to determine which encoding should be used, with 0 meaning native and 1 meaning XML.
+
+#### i. Native encoding  
+
+This is the original encoding 

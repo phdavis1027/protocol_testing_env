@@ -66,7 +66,7 @@ def window(seq, n=2):
         yield result
 
 # On the one hand, including headers makes the whole thing somewhat 
-# confusing to look at since most things wind up alternating between different heads, 
+# confusing to look at since most things wind up alternating between different headers, 
 # but on the other hand there are some cases where the choice to send a header is 
 # especially significant, e.g., in the case of a successful file transfer vs.
 # whatever error message the server might send back.
@@ -94,7 +94,7 @@ def main():
     nx.draw_networkx_nodes(g, pos, alpha=.9)
     nx.draw_networkx_labels(g, pos, font_size=5)
     
-    with open(path.abspath("./visualizer/public/graph.json"), "w+") as f:
+    with open(path.abspath("./Phonetic-Cubes/public/json/graph.json"), "w+") as f:
         f.write(nx.jit_data(g))
 
 if __name__ == "__main__":

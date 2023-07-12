@@ -136,7 +136,7 @@ types available in the iRODS protocol:
 |--------|----------------------------------------------------------------------------------------------------------------------|
 | char   | 8-bit unsigned integer.                                                                                              |
 | bin    | 8-bit binary data. In XML protocol items of type `bin` MUST be base64-encoded.                                       |
-| str    | A null-terminated string of valid UTF-8 chars.                                                                       |
+| str    | A null-terminated string of chars. MUST be valid UTF-8.                                                              |
 | piStr  | Syntactically the same as `str` but value must be the name of a valid iRODS protocol type.                           |
 | int    | 32-bit integer or floating point value.                                                                              |
 | double | 64-bit integer or floating point value.                                                                              |
